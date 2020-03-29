@@ -44,7 +44,6 @@ export default function Profile() {
 
     history.push('/');
   }
-
   return (
     <div className="body">
       <div className="profile-container">
@@ -59,30 +58,26 @@ export default function Profile() {
             <FiPower size={18} color="#E02041" /> 
           </button>
         </header>
+          <h1>Casos Cadastrados</h1>
+            <ul>
+              {incidents.map(incident => (
+                <li key={incident.id}>
+                  <strong>CASO:</strong>
+                  <p>{incident.title}</p>
 
-        <h1>Casos Cadastrados</h1>
+                  <strong>DESCRIÇÃO</strong>
+                  <p>{incident.description}</p>
 
-        <ul>
-          {incidents.map(incident => (
-            <li key={incident.id}>
-              <strong>CASO:</strong>
-              <p>{incident.title}</p>
+                  <strong>VALOR:</strong>
+                  <p>{Intl.NumberFormat('pt-BR', {style: 'currency', currency: 'BRL'}).format(incident.value)}</p>
 
-              <strong>DESCRIÇÃO</strong>
-              <p>{incident.description}</p>
-
-              <strong>VALOR:</strong>
-              <p>{Intl.NumberFormat('pt-BR', {style: 'currency', currency: 'BRL'}).format(incident.value)}</p>
-
-            <button onClick={() => handleDeleteIncident(incident.id)} type="button">
-              <FiTrash2 size={20} color="#a8a8b3"/>
-            </button>
+                  <button onClick={() => handleDeleteIncident(incident.id)} type="button">
+                  <FiTrash2 size={20} color="red"/>
+                  </button>  
+                </li>
+              ))}
+            </ul>
           
-            
-          </li>
-          ))}
-        </ul>
-      
       </div>
     </div>
     

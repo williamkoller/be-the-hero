@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { FiArrowLeft } from 'react-icons/fi';
+import NumberFormat from 'react-number-format';
 import logoImg from '../../assets/logo.svg'
 import api from '../../services/api';
 
@@ -9,7 +10,7 @@ import './style.css'
 export default function Register() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
-  const [whatsapp, setwhatsapp] = useState('');
+  const [whatsapp, setWhatsapp] = useState('');
   const [city, setCity] = useState('');
   const [uf, setUf] = useState('');
 
@@ -62,11 +63,20 @@ export default function Register() {
             value={email}
             onChange={e => setEmail(e.target.value)}
           />
-          <input 
-            placeholder="Whatsapp"
+
+          <NumberFormat 
+            placeholder="WhatsApp" 
+            format="+55 (###) #####-#### "
+            allowEmptyFormatting mask="_"
+            value={whatsapp}
+            onChange={e => setWhatsapp(e.target.value)}
+            /> 
+          {/* <input 
+            placeholder="Whatsapp" maxLength="14"
             value={whatsapp}
             onChange={e => setwhatsapp(e.target.value)}
-          />
+          /> */}
+
 
           <div className="input-group">
             <input 
@@ -75,9 +85,9 @@ export default function Register() {
               onChange={e => setCity(e.target.value)}
             />
             <input 
-              placeholder="UF" style={{ width: 80}}
+              placeholder="UF" style={{ width: 80}} maxLength="2"
               value={uf}
-              onChange={e => setUf(e.target.value)}
+              onChange={e => setUf(e.target.value.toUpperCase())}
             />
           </div>
 
