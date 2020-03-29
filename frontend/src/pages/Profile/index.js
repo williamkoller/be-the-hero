@@ -58,9 +58,9 @@ export default function Profile() {
             <FiPower size={18} color="#E02041" /> 
           </button>
         </header>
-          <h1>Casos Cadastrados</h1>
+        {incidents.length > 0 ? <h1>Casos Cadastrados</h1> : null}
             <ul>
-              {incidents.map(incident => (
+              {incidents.length > 0 ? (incidents.map(incident => (
                 <li key={incident.id}>
                   <strong>CASO:</strong>
                   <p>{incident.title}</p>
@@ -75,7 +75,10 @@ export default function Profile() {
                   <FiTrash2 size={20} color="red"/>
                   </button>  
                 </li>
-              ))}
+              ))
+              ) : (
+                <h1>Nenhum Caso Registrado</h1>
+              )}
             </ul>
           
       </div>
