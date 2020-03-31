@@ -9,7 +9,7 @@ const routes = express.Router();
 
 routes.post('/sessions', celebrate({
   [Segments.BODY]: Joi.object().keys({
-    id: Joi.number().required(),
+    id: Joi.string().required(),
   })
 }), SessionController.create);
 
@@ -22,6 +22,7 @@ routes.post('/ongs', celebrate({
     whatsapp: Joi.string().required().min(10).max(11),
     city: Joi.string().required(),
     uf: Joi.string().required().length(2),
+
   }) 
 }), OngController.create);
 
