@@ -17,13 +17,13 @@ describe('ONG Created', () => {
     .post('/ongs')
     .send({
       name: "ONG Koller",
-      email: "contatoas@gmail.com",
+      email: "contact@gmail.com",
       whatsapp: "41998625101",
       city: "Curitiba",
       uf: "PR"
     });
     expect(response.body).toHaveProperty('id');
     expect(response.body.id).toHaveLength(8);
-    
+
   });
 });
